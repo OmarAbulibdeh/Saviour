@@ -1,4 +1,5 @@
 class Star {
+
   int xPos, yPos, starSize;
   float flickerRate, light;
   boolean rise;
