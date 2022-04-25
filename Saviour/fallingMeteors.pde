@@ -18,7 +18,7 @@ class Meteor{
   }
   
   public void display(){
-    fill(0, 100, 0);
-    rect(xCor, yCor,w,h,5);
+    fill(200, 100, 50);
+    circle(xCor, yCor,10);
   }
 }
