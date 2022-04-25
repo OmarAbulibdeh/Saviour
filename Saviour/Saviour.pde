@@ -99,8 +99,8 @@ void moveMeteor(){
 void drawPlayer(){
   stroke(0);
   strokeWeight(2);
-  fill(100, 50, 150);
-  rect(playerXCor, playerYCor, playerWidth, playerHeight, 7);
+  fill(0, 250, 0);
+  circle(playerXCor, playerYCor, 50);
 }
 
 
