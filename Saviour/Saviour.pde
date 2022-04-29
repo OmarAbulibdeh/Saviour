@@ -8,7 +8,6 @@ int playerHeight = 55;
 int difficulty = 10;  //the higher the diffucluty the more Meteor drops offalling fallings
 int limit = 10;
 float score = 0;
-int lives = 4;
 String message = "Please, Do Try Again If You Had Fun :) ";
 boolean isCollided = false; // detects the collison between the Meteordrops and the player
 boolean lost = true;
@@ -21,11 +20,11 @@ void fallingMeteor(int xMin, int xMax, int yMin, int yMax, int num){
   for(int i = 0; i < Meteor.length; i++){  // for loops for the Meteorfalling
      int x = (int)random(xMin, xMax);
      int y = (int)random(yMin, yMax);
-     Meteor[i] = new Meteor(x, y, 30, 15);
+     Meteor[i] = new Meteor(x, y, 30);
   }
 }
 void setup(){
-  size(1280,720);
+  fullScreen();
   background(0);
    
   //background stars
@@ -42,21 +41,14 @@ void setup(){
 
 void draw(){
   background(0);
-   background(0);
+  background(0);
+  //Meteor.trail.add(new PVector);
    
   //background stars
   for(int i = 0; i <= stars.size()-1; i++){
     Star starUse = (Star) stars.get(i);
     starUse.display();
- //Lives        
-    fill(255);
-    text("Lives: "+(int)lives, width-210, 40);
-    textSize(30);
-  
-     
-    }
-        
-  
+  }
 
    drawPlayer();
   
@@ -68,18 +60,11 @@ void draw(){
   }
   
  else{
-   
-   lives = lives-1;
-  
- 
- }
-     
-  if (lives <= 0) {
    text("Your Final Score Was: "+(int)score,400, 360);
    println(message);
    noLoop();
- }       
- 
+ }
+
   
 }
 
@@ -92,16 +77,15 @@ void moveMeteor(){
         Meteor[i].drop(random(1, 20));
       
       // detecting if the colliosn of the player happened with thefalling Meteor
-        boolean conditionXLeft = Meteor[i].xCor + Meteor[i].w >= playerXCor;
-        boolean conditionXRight = Meteor[i].xCor + Meteor[i].w <= playerXCor + playerWidth + 4;
+        boolean conditionXLeft = Meteor[i].xCor + Meteor[i].size >= playerXCor;
+        boolean conditionXRight = Meteor[i].xCor + Meteor[i].size <= playerXCor + playerWidth + 4;
         boolean conditionUp =  Meteor[i].yCor >= playerYCor;
-        boolean conditionDown = Meteor[i].yCor + Meteor[i].h <= playerYCor + playerHeight;
+        boolean conditionDown = Meteor[i].yCor + Meteor[i].size <= playerYCor + playerHeight;
       
         if(conditionXLeft && conditionXRight && conditionUp && conditionDown){
              isCollided = true;
-              
         }
-
+  
       }
      
     score += 0.1;
@@ -109,10 +93,6 @@ void moveMeteor(){
     fill(255);
     text("Score: "+(int)score, 10, 40);
     textSize(30);
-    
-  
-
-  
 }
 
 
