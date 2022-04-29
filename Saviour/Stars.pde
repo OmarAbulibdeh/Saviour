@@ -30,5 +30,6 @@ class Star {
     }
     fill(light);
     rect(xPos, yPos,starSize,starSize);
+    stroke(0);
   }
 }
