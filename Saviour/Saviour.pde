@@ -8,6 +8,7 @@ int playerHeight = 55;
 int difficulty = 10;  //the higher the diffucluty the more Meteor drops offalling fallings
 int limit = 10;
 float score = 0;
+int lives = 4;
 String message = "Please, Do Try Again If You Had Fun :) ";
 boolean isCollided = false; // detects the collison between the Meteordrops and the player
 boolean lost = true;
@@ -24,8 +25,8 @@ void fallingMeteor(int xMin, int xMax, int yMin, int yMax, int num){
   }
 }
 void setup(){
-  fullScreen();
-  background(0);
+size(1280,720);
+background(0);
    
   //background stars
   stars = new ArrayList();
@@ -48,6 +49,11 @@ void draw(){
   for(int i = 0; i <= stars.size()-1; i++){
     Star starUse = (Star) stars.get(i);
     starUse.display();
+    
+    //Lives        
+    fill(255);
+    text("Lives: "+(int)lives, width-210, 40);
+    textSize(30);
   }
 
    drawPlayer();
@@ -59,14 +65,18 @@ void draw(){
     }
   }
   
- else{
+ else {
+    lives = lives -1;
+  }
+  
+     
+  if (lives <= 0) {
    text("Your Final Score Was: "+(int)score,400, 360);
    println(message);
    noLoop();
+ }       
+ 
  }
-
-  
-}
 
 void moveMeteor(){
       for(int i = 0; i < Meteor.length; i++){  // where the next group offalling Meteor will be summoned
