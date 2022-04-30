@@ -17,13 +17,13 @@ class Meteor{
     yCor += speed;
   }
   
-  private void display(){
-    int size = 10;
+   void display(){
     fill(200, 100, 50);
-    circle(xCor, yCor, size);
+    image(meteorImg, xCor, yCor);
+    meteorImg.resize(meteorSize, meteorSize);
     
     for(int trails = 0; trails < 10; trails++){
-      float range = random(-size/2,size/2);
+      float range = random(-meteorSize/2,meteorSize/2);
       stroke(255, 165, 0);
       line(xCor-range, yCor-5, xCor-range, yCor-(random(50,70)));
 
