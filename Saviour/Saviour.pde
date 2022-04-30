@@ -21,6 +21,7 @@ Meteor[] Meteor;
 //images
 PImage ufoImg;
 PImage meteorImg;
+PImage explosionImg;
 
 void fallingMeteor(int xMin, int xMax, int yMin, int yMax, int num) {
   Meteor = new Meteor[num];
@@ -37,6 +38,7 @@ void setup() {
 
   ufoImg = loadImage("ufo.png");
   meteorImg = loadImage("meteor.png");
+  explosionImg = loadImage("explosion");
 
 
   //background stars
@@ -76,15 +78,6 @@ void draw() {
       limit += 20;
     }
   }
-
-
-
-
-  if (lives <= 0) {
-    text("Your Final Score Was: "+(int)score, 400, 360);
-    println(message);
-    noLoop();
-  }
 }
 
 void moveMeteor() {
@@ -108,6 +101,14 @@ void moveMeteor() {
       lives = lives -1;
       hasHit = true;
     }
+    if (lives <= 0) {
+    text("Your Final Score Is: "+(int)score, 400, 360);
+    //image(explosion, playerXCor,playerYCor)
+    //explosionImg.Resize( #, #)
+    println(message);
+    noLoop();
+  }
+  
   }
 
 
