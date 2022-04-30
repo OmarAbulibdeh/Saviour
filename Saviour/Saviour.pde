@@ -1,6 +1,7 @@
 import processing.sound.*; 
 
 //Variables 
+int meteorSize = 50;
 int playerXCor = 600;  // cordiantes of the players avatar
 int playerYCor = 590;
 int playerWidth = 55;  // width and height of the players avatar
@@ -15,6 +16,10 @@ boolean lost = true;
 ArrayList stars;
 Meteor[] Meteor;
 
+//images
+PImage ufoImg;
+PImage meteorImg;
+
 void fallingMeteor(int xMin, int xMax, int yMin, int yMax, int num){
   Meteor = new Meteor[num];
  
@@ -27,6 +32,10 @@ void fallingMeteor(int xMin, int xMax, int yMin, int yMax, int num){
 void setup(){
 size(1280,720);
 background(0);
+
+ufoImg = loadImage("ufo.png");
+meteorImg = loadImage("meteor.png");
+
    
   //background stars
   stars = new ArrayList();
@@ -43,7 +52,8 @@ background(0);
 void draw(){
   background(0);
   background(0);
-  //Meteor.trail.add(new PVector);
+  
+    //Meteor.trail.add(new PVector);
    
   //background stars
   for(int i = 0; i <= stars.size()-1; i++){
@@ -111,7 +121,8 @@ void drawPlayer(){
   stroke(0);
   strokeWeight(2);
   fill(0, 250, 0);
-  circle(playerXCor, playerYCor, 50);
+  image(ufoImg, playerXCor, playerYCor);
+  ufoImg.resize(50, 50);
 }
 
 
